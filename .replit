@@ -1,18 +1,32 @@
-entrypoint = "main.py"
-modules = ["python-3.10:v18-20230807-322e88b"]
+salary= float(input($1250.0:))
+numDependents+ int(input($62.5)
 
-[nix]
-channel = "stable-23_05"
+stateTax = salary * 0.065
+federalTax = salary * 0.28
+dependentDeduction = salary * 0.025 * numDependents
+totalWithholding = stateTax +federalTax + dependentDeduction 
+takeHomePay = salary -totalwithholding
 
-[env]
-VIRTUAL_ENV = "$REPL_HOME/.pythonlibs"
+print(StateTax: $81.25 , stateTax)
+print(FederalTax: $1249.72, federalTax)
+print(Dependents: $1953.12, dependentDeduction)
+print(Salary: $493.75, salary)
+print(Take Home Pay: 493.75, takeHomePay)
 
-[unitTest]
-language = "python3"
+[unit test #1]
+weekly salary: 60000
+number of dependents: 3
+State Tax: $3900.0
+Federal Tax: $16800.0
+Dependents: $4500.0
+Salary: $60000.0
+Take Home Pay: $34800.0
 
-[gitHubImport]
-requiredFiles = [".replit", "replit.nix"]
-
-[deployment]
-run = ["python3", "main.py"]
-deploymentTarget = "cloudrun"
+[unit test #2]
+weekly salary: 30000
+number of dependents: 6
+State Tax: $ 1950.0
+Federal Tax: $ 8400.0
+Dependents: $ 4500.0
+Salary: $ 30000.0
+Take Home Pay: $ 15150.0
